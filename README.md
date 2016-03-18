@@ -7,7 +7,7 @@
 
 This Particle application allows you to monitor the status of your drone,
 including position, velocity, and battery level, anywhere there is cellular network coverage.
-mavleash stands for "Micro Air Vehicle Leash"
+The name mavleash derives from "Micro Air Vehicle Leash".
 
 Mavleash uses the [Particle.io Electron board ](https://store.particle.io/collections/electron), 
 with the associated cellular data plan, to maintain two-way radio contact with your drone,
