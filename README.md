@@ -78,6 +78,10 @@ Be aware that different drones support different mavlink commands, and not all d
 react to these commands in exactly the same way. Test your vehicle in a safe venue before
 relying on mavleash to recover your drone if it flies away.  
 
+You can use something like [Coda for iOS](https://panic.com/coda-ios/) to load the mavlink HTML file locally
+on your phone and view live updates from your Electron.
+
+![ios-client-view](/img/ios-client-view.png?raw=true "mavleash on iOS")
 
 ### Next Steps
 
