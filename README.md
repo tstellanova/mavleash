@@ -42,11 +42,22 @@ serial UART port of the Electron (RX, TX, GND, VIN). Assuming you've already con
 you need only run four wires from the drone's port to the Electron pins. 
 In my testing I found it adequate to attach the Electron's VIN to the Pixhawk's 5V output line on the TELEM1 port. 
 
-![wiring-to-a-photon](/img/photon-wiring01?raw=true)
+![wiring-to-a-photon](/img/photon-wiring01.JPG?raw=true) 
+![electron-overview](/img/electron-overview.jpg?raw=true)
 
+Note that you can just as easily use a Particle Photon for prototyping and testing, as I did. 
+This uses WiFi instead of cellular data, possibly saving your some data usage during your prototyping phase.
 
 Tip: If you think you've wired up everything correctly and you're not receiving any data from the
 Electron, you may have swapped the RX and TX lines: try reversing them. 
+
+### Mounting
+
+There are many ways to mount your Electron and its antenna to your drone.
+Here are a few photos of how I mounted the Electron on an F450 quadcopter for testing:
+
+![electron-arm-3q](/img/electron-arm-3q.jpg?raw=true) ![electron-arm-top](/img/electron-arm-top.jpg?raw=true)
+![mount-on-F450](/img/mount-on-F450.JPG?raw=true)
 
 ### Running
 
@@ -58,8 +69,6 @@ data available in the cloud using a simple web page with javascript.
 To use it, you'll need to obtain your Electron's device ID and authorization token from 
 the Particle.io site and populate those fields in the HTML file.
 This file is for test purposes only: be careful to never publish your authorization token.
-Follow the directions from Particle.io if you wish to create a full-blown mobile app or website
-that monitors your device's location.
 
 In addition, you can use IFTTT.com (if this then that) to pull Particle.io events into other web services.
 I've setup an [example IFTTT recipe](https://ifttt.com/recipes/397072-log-particle-event-data) 
@@ -72,9 +81,9 @@ mavleash also publishes the 'LANDED_STATE' event when your drone takes off (IN\_
 
 The sample mavleash HTML file provides a few command buttons:
 
++ RTL: Tells the drone to return to where it was launched (may work for some drones)
 + Land:  This sends a landing command to your drone. 
 + Takeoff: Tells the drone to takeoff (assuming it already has a mission and is in auto mode)
-+ RTL: Tells the drone to return to where it was launched (may work for some drones)
 + Reset: Tells the Electron board itself to reset
 
 Be aware that different drones support different mavlink commands, and not all drones will 
@@ -82,7 +91,10 @@ react to these commands in exactly the same way. Test your vehicle in a safe ven
 relying on mavleash to recover your drone if it flies away.  
 
 You can use something like [Coda for iOS](https://panic.com/coda-ios/) to load the mavlink HTML file locally
-on your phone and view live updates from your Electron.
+on your phone and view live updates from your Electron.  
+
+Follow the directions from Particle.io if you wish to create a full-blown mobile app or website
+that monitors your device's location.
 
 ![ios-client-view](/img/ios-client-view.PNG?raw=true "mavleash on iOS")
 
@@ -92,9 +104,7 @@ Some folks may wish to run both mavleash as well as a more traditional telemetry
 or monitor their mavlink telemetry using MinimOSD. 
 
 You can readily split the output line (RX) of the autopilot mavlink port and 
-supply it to multiple readers (SiK, MinimOSD, and Electron).  
-This will provide you with a telemetry stream from the autopilot.  
-You can configure the wiring so that one of the radios can write commands back to the autopilot's input pin.
+supply it to multiple readers (SiK, MinimOSD, and Electron).  This will provide you with a telemetry stream from the autopilot.  You can configure the wiring so that one of the radios can write commands back to the autopilot's input pin.
 For example you could use the [MAVBoard Lite](https://github.com/mavboard/mavboard)
 
 However, if you wish to send commands to the autopilot from multiple sources, this is more tricky.
