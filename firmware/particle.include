@@ -1,0 +1,12 @@
+#particle.include
+# from current dir
+*.h
+*.ino
+*.cpp
+*.c
+
+# and from any subdirectories
+**/*.h
+**/*.cpp
+
+
