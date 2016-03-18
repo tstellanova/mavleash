@@ -42,6 +42,9 @@ serial UART port of the Electron (RX, TX, GND, VIN). Assuming you've already con
 you need only run four wires from the drone's port to the Electron pins. 
 In my testing I found it adequate to attach the Electron's VIN to the Pixhawk's 5V output line on the TELEM1 port. 
 
+![wiring-to-a-photon](/img/photon-wiring01?raw=true)
+
+
 Tip: If you think you've wired up everything correctly and you're not receiving any data from the
 Electron, you may have swapped the RX and TX lines: try reversing them. 
 
@@ -81,7 +84,7 @@ relying on mavleash to recover your drone if it flies away.
 You can use something like [Coda for iOS](https://panic.com/coda-ios/) to load the mavlink HTML file locally
 on your phone and view live updates from your Electron.
 
-![ios-client-view](/img/ios-client-view.png?raw=true "mavleash on iOS")
+![ios-client-view](/img/ios-client-view.PNG?raw=true "mavleash on iOS")
 
 ### Next Steps
 
