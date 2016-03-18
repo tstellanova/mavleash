@@ -1,7 +1,7 @@
 # mavleash
 
-Author: Todd Stellanova <todd@droneflow.com>
-License: MIT
++ Author: Todd Stellanova <todd@droneflow.com>
++ License: MIT
 
 ### Description 
 
@@ -25,7 +25,7 @@ For my testing I've used standard Pixhawk v2.4.6 autopilot hardware and the late
 
 Currently you will need to build using the Particle command line tools:
 
-```
+```shell
 cd /firmware
 rm *.bin
 particle compile electron .
@@ -38,19 +38,20 @@ you can flash your Electron over the cellular connection (data usage charges app
 ### Wiring
 
 This application connects from the drone's mavlink serial output port to the 
-serial UART port of the Electron (RX, TX, GND, VIN).  
-Assuming you've already configured your drone to output mavlink on the serial port (not USB),
+serial UART port of the Electron (RX, TX, GND, VIN). Assuming you've already configured your drone to output mavlink on the serial port (not USB),
 you need only run four wires from the drone's port to the Electron pins. 
-In my testing I found it perfectly adequate to attach the Electron's VIN to the Pixhawk's 5V output
-line on the TELEM1 port. 
+In my testing I found it adequate to attach the Electron's VIN to the Pixhawk's 5V output line on the TELEM1 port. 
 
 Tip: If you think you've wired up everything correctly and you're not receiving any data from the
 Electron, you may have swapped the RX and TX lines: try reversing them. 
 
 ### Running
 
-The included `/web/mavleash.html` file provides an example of monitoring the status of your drone 
-using a simple web page with javascript.  
+Once flashed, your Electron should begin running mavleash right away, receiving mavlink data from your autopilot
+and forwarding a CSV summary to the Particle cloud.
+
+The included `/web/mavleash.html` file provides an example of monitoring the status of your drone from the
+data available in the cloud using a simple web page with javascript.  
 To use it, you'll need to obtain your Electron's device ID and authorization token from 
 the Particle.io site and populate those fields in the HTML file.
 This file is for test purposes only: be careful to never publish your authorization token.
@@ -60,11 +61,22 @@ that monitors your device's location.
 In addition, you can use IFTTT.com (if this then that) to pull Particle.io events into other web services.
 I've setup an [example IFTTT recipe](https://ifttt.com/recipes/397072-log-particle-event-data) 
 that will pull particle event data (I use the 'statecsv' event mavleash generates) into 
-a Google Drive spreadsheet: each time mavleash generates a statecsv event, this recipe will
+a Google Drive spreadsheet: Each time mavleash generates a statecsv event, this recipe will
 add a row to the spreadsheet.  This is handy for recording your flights.
 
 You can setup a similar IFTTT recipe for tracking your flight time:
 mavleash also publishes the 'LANDED_STATE' event when your drone takes off (IN\_AIR) or lands (ON\_GROUND).
+
+The sample mavleash HTML file provides a few command buttons:
+
++ Land:  This sends a landing command to your drone. 
++ Takeoff: Tells the drone to takeoff (assuming it already has a mission and is in auto mode)
++ RTL: Tells the drone to return to where it was launched (may work for some drones)
++ Reset: Tells the Electron board itself to reset
+
+Be aware that different drones support different mavlink commands, and not all drones will 
+react to these commands in exactly the same way. Test your vehicle in a safe venue before
+relying on mavleash to recover your drone if it flies away.  
 
 
 ### Next Steps
