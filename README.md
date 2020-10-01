@@ -1,7 +1,7 @@
 # mavleash
 
-+ Author: Todd Stellanova <todd@droneflow.com>
-+ License: MIT
++ Author: Todd Stellanova
++ License: BSD-3 Clause
 
 ### Description 
 
