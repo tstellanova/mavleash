@@ -1,6 +1,6 @@
 {
   "name": "mavleash",
-  "author": "Todd Stellanova <todd@droneflow.com>",
+  "author": "Todd Stellanova"
   "license": "MIT",
   "version": "0.0.10",
   "description": "A Particle library that sends and receives Mavlink messages via a serial connection"
